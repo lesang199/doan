@@ -20,6 +20,7 @@ try {
     // Lấy danh sách thương hiệu
     $stmt = $conn->query("SELECT * FROM brands WHERE status = 'active'");
     $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ 
 
     // Lấy tin tức mới nhất
     $stmt = $conn->query("SELECT * FROM news WHERE status = 'published' ORDER BY created_at DESC LIMIT 3");
@@ -38,7 +39,92 @@ try {
     <title>SPORTISA - Cửa hàng thể thao chính hãng</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        /* Cources */
+.carousel-container {
+  width: 100%;
+  height: 480px;
+  background-color: aliceblue;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-inner-custom {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-inner-custom img {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: fill;
+}
+
+.arrow-icon-left,
+.arrow-icon-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.arrow-icon-left:hover,
+.arrow-icon-right:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow-icon-left {
+  left: 10px;
+}
+
+.arrow-icon-right {
+  right: 10px;
+}
+
+.arrow-icon-left i,
+.arrow-icon-right i {
+  font-size: 24px;
+  color: white;
+}
+
+/* Brands */
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-body.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.card:hover .card-body.overlay {
+  opacity: 1;
+}
+
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -86,6 +172,7 @@ try {
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="profile.php">Tài khoản</a></li>
                                     <li><a class="dropdown-item" href="orders.php">Đơn hàng</a></li>
+                                    <li><a class="dropdown-item" href="change_password.php">Đổi mật khẩu</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
                                 </ul>
@@ -114,6 +201,21 @@ try {
             </div>
         </div>
     </section>
+
+    <div class="carousel-container">
+  <div class="carousel-inner-custom">
+    <img src="./images/heroSection1.webp" alt="">
+    <img src="./images/anhtt2.jpg" alt="">
+    <img src="./images/anhtt3.webp" alt="">
+    <img src="./images/heroSection1.webp" alt="">
+    <img src="./images/heroSection1.webp" alt="">
+  </div>
+
+  <!-- Navigation arrows -->
+  <span class="arrow-icon-left"><i class="fa-solid fa-arrow-left"></i></span>
+  <span class="arrow-icon-right"><i class="fa-solid fa-arrow-right"></i></span>
+</div>
+
 
     <!-- Featured Products -->
     <section class="py-5">
@@ -170,29 +272,32 @@ try {
         </div>
     </section>
 
+   
+
     <!-- Brands -->
     <section class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Thương hiệu</h2>
-            <div class="row">
-                <?php foreach ($brands as $brand): ?>
-                    <div class="col-md-3 mb-4">
-                        <div class="card h-100">
-                            <?php if ($brand['logo']): ?>
-                                <img src="uploads/brands/<?php echo $brand['logo']; ?>" 
-                                     class="card-img-top p-3" 
-                                     alt="<?php echo htmlspecialchars($brand['name']); ?>">
-                            <?php endif; ?>
-                            <div class="card-body text-center">
-                                <h5 class="card-title"><?php echo htmlspecialchars($brand['name']); ?></h5>
-                                <a href="brand.php?slug=<?php echo $brand['slug']; ?>" class="btn btn-outline-primary">Xem sản phẩm</a>
-                            </div>
+    <div class="container">
+        <h2 class="text-center mb-4">Thương hiệu</h2>
+        <div class="row">
+            <?php foreach ($brands as $brand): ?>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 position-relative">
+                        <?php if ($brand['logo']): ?>
+                            <img src="./images/<?php echo $brand['logo']; ?>" 
+                                 class="card-img-top p-3" 
+                                 alt="<?php echo htmlspecialchars($brand['name']); ?>">
+                        <?php endif; ?>
+                        <div class="card-body text-center overlay">
+                            <h5 class="card-title"><?php echo htmlspecialchars($brand['name']); ?></h5>
+                            <a href="brand.php?slug=<?php echo $brand['slug']; ?>" class="btn btn-outline-primary">Xem sản phẩm</a>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- News -->
     <section class="py-5 bg-light">
@@ -218,6 +323,8 @@ try {
             </div>
         </div>
     </section>
+
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4">
@@ -253,5 +360,46 @@ try {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+  const imgAll = document.querySelectorAll(".carousel-inner-custom img");
+  const list = document.querySelector(".carousel-inner-custom");
+  const iconLeft = document.querySelector(".arrow-icon-left");
+  const iconRight = document.querySelector(".arrow-icon-right");
+  const imgLength = imgAll.length;
+  let currentIdx = 0;
+
+  function updateTransform() {
+    const width = imgAll[0].offsetWidth;
+    list.style.transform = `translateX(${-width * currentIdx}px)`;
+    list.style.transition = '0.5s ease';
+  }
+
+  function slideShow() {
+    currentIdx = (currentIdx + 1) % imgLength;
+    updateTransform();
+  }
+
+  let interval = setInterval(slideShow, 3000);
+
+  iconLeft.addEventListener("click", () => {
+    clearInterval(interval);
+    currentIdx = (currentIdx === 0) ? imgLength - 1 : currentIdx - 1;
+    updateTransform();
+    interval = setInterval(slideShow, 3000);
+  });
+
+  iconRight.addEventListener("click", () => {
+    clearInterval(interval);
+    currentIdx = (currentIdx === imgLength - 1) ? 0 : currentIdx + 1;
+    updateTransform();
+    interval = setInterval(slideShow, 4000);
+  });
+
+  // Resize support
+  window.addEventListener('resize', updateTransform);
+</script>
+   
 </body>
 </html>

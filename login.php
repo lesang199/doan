@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
+                $_SESSION['email'] = $user['email'];
 
                 // Chuyển hướng dựa vào vai trò
                 if ($user['role'] == 'admin') {
@@ -51,7 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php';
+     ?>
 
     <div class="container py-5">
         <div class="row justify-content-center">
@@ -75,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="password" class="form-control" name="password" required>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                                <input type="submit" class="btn btn-primary" value="Đăng nhập"></input>
                             </div>
                         </form>
                         <div class="text-center mt-3">

@@ -1,170 +1,174 @@
 /* Global Styles */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --light-color: #ecf0f1;
-    --dark-color: #2c3e50;
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--dark-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
 }
 
 /* Header Styles */
 .navbar {
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* background-color: var(--primary-color); */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
-    font-weight: bold;
-    color: white !important;
+  font-weight: bold;
+  color: white !important;
 }
 
 .nav-link {
-    color: white !important;
-    transition: color 0.3s;
+  color: white !important;
+  transition: color 0.3s;
 }
 
 .nav-link:hover {
-    color: var(--secondary-color) !important;
+  color: var(--secondary-color) !important;
 }
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 100px 0;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  padding: 100px 0;
 }
 
 .hero-section h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .hero-section p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
 /* Category Cards */
 .category-card {
-    transition: transform 0.3s;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .category-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .category-card img {
-    height: 200px;
-    object-fit: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 /* Product Cards */
 .product-card {
-    transition: transform 0.3s;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+  transition: transform 0.3s;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .product-card img {
-    height: 200px;
-    object-fit: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 .product-card .card-title {
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .product-card .card-text {
-    color: var(--accent-color);
-    font-weight: bold;
-    font-size: 1.2rem;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /* Why Choose Us Section */
 .why-choose-us {
-    background-color: var(--light-color);
+  background-color: var(--light-color);
 }
 
 .why-choose-us i {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 /* Footer */
 footer {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 40px 0;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 40px 0;
 }
 
 footer h5 {
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 footer a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 footer a:hover {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 50px 0;
-        text-align: center;
-    }
+  .hero-section {
+    padding: 50px 0;
+    text-align: center;
+  }
 
-    .hero-section h1 {
-        font-size: 2rem;
-    }
+  .hero-section h1 {
+    font-size: 2rem;
+  }
 
-    .hero-section img {
-        margin-top: 30px;
-    }
+  .hero-section img {
+    margin-top: 30px;
+  }
 }
 
 /* Custom Buttons */
 .btn-primary {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    padding: 10px 20px;
-    font-weight: bold;
-    transition: all 0.3s;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: all 0.3s;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .btn-outline-primary {
-    color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    transition: all 0.3s;
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transition: all 0.3s;
 }
 
 .btn-outline-primary:hover {
-    background-color: var(--secondary-color);
-    color: white;
-    transform: translateY(-2px);
-} 
+  background-color: var(--secondary-color);
+  color: white;
+  transform: translateY(-2px);
+}
