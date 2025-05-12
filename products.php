@@ -51,6 +51,28 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Sản phẩm - SPORTISA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .input-group {
+            width: 300px;
+        }
+        .input-group input {
+            border-color: none;
+            user-select: none;
+           
+        }
+        .input-group input:focus {
+            box-shadow: none;
+            border-color:none ;
+        }
+        .input-group button {
+            background-color: #007bff;
+            border: none;
+        }
+        .input-group button:hover {
+            transform: translate(0);
+            background-color: #0056b3;
+        }
+    </style>
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
